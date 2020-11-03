@@ -1,0 +1,15 @@
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-child-comp',
+  templateUrl: './child-comp.component.html',
+  styleUrls: ['./child-comp.component.scss']
+})
+export class ChildCompComponent implements OnInit {
+  @Input() selectedRow: any;
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

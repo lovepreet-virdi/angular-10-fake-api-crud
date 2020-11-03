@@ -1,0 +1,46 @@
+<div class="content-container">
+    <h1 class="main-heading">Welcome to employees list</h1>
+
+  
+
+    <table class="table posts-table">
+        <thead>
+            <tr>
+                <th class="left" width="20%">
+                    Id
+                </th>
+                <th class="left" width="20%">
+                    Name
+                </th>
+                <th class="left" width="20%">
+                    Email
+                </th>
+                <th class="left" width="20%">
+                    Phone
+                </th>
+                
+
+                <th class="left" width="20%">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees; index as i ">
+                <td class="left" width="20%">{{employee.id}}</td>
+                <td class="left" width="20%">{{employee.name}}</td>
+                <td class="left" width="20%">{{employee.email}}</td>
+                <td class="left" width="20%">{{employee.phone}}</td>
+
+                <td class="left" width="20%">
+
+                    <span>
+                        <clr-icon title="Edit Details" shape="pencil" (click)="handleEdit($event, employee.id)">
+                        </clr-icon>
+                    </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

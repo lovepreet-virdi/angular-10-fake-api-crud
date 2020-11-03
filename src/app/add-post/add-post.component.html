@@ -1,0 +1,38 @@
+<div class="content-container">
+    <div *ngIf="showCreateMsg || showUpdateMsg" class="success-alert">
+        {{showCreateMsg ? CONSTANTS.created :  CONSTANTS.updated }}
+    </div>
+    <div *ngIf="showErrorMsg" class="error-alert">
+        {{ CONSTANTS.error}}
+    </div>
+
+    <h1 class="main-heading">{{isEditForm ? 'Edit' : 'Add'}} Post</h1>
+    <form clrForm [formGroup]="postsForm" (ngSubmit)="onSubmit()" class="add-form">
+        <clr-input-container
+            [class]="(postsForm.controls.title.touched || postsForm.controls.title.dirty) && postsForm.controls.title.errors ?  'clr-error' : ''">
+            <label>Title</label>
+            <input formControlName="title" clrInput type="text" />
+
+            <clr-control-error
+                *ngIf="(postsForm.controls.title.touched || postsForm.controls.title.dirty) && postsForm.controls.title.errors">
+                {{CONSTANTS.required}}</clr-control-error>
+
+        </clr-input-container>
+
+        <clr-textarea-container
+            [class]="(postsForm.controls.body.touched || postsForm.controls.body.dirty) && postsForm.controls.body.errors ?  'clr-error' : ''">
+            <label>Body</label>
+            <textarea clrTextarea formControlName="body"></textarea>
+            <clr-control-error
+                *ngIf="(postsForm.controls.title.touched || postsForm.controls.title.dirty) && postsForm.controls.title.errors">
+                {{CONSTANTS.required}}</clr-control-error>
+        </clr-textarea-container>
+        <div class="btn-grid">
+            <button type="submit" class="btn btn-primary">{{isEditForm ? 'Update': 'Save'}}</button>
+            <button *ngIf="!isEditForm" type="btn" class="btn btn-outline" (click)="onReset()">Reset</button>
+            <button *ngIf="isEditForm" type="btn" class="btn btn-outline" (click)="cancelEdit()">Cancel</button>
+        </div>
+
+    </form>
+
+</div>

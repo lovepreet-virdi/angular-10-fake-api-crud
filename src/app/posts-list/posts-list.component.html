@@ -1,0 +1,40 @@
+<div class="content-container">
+    <h1 class="main-heading">Welcome to posts list</h1>
+
+    <app-child-comp [selectedRow]="selectedRow"></app-child-comp>
+
+    <table class="table posts-table">
+        <thead>
+            <tr>
+                <th class="left" width="20%">
+                    Id
+                </th>
+                <th class="left" width="20%">
+                    Title
+                </th>
+                <th class="left" width="40%">
+                    Body
+                </th>
+                <th class="left" width="20%">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts; index as i ">
+                <td class="left" width="20%">{{post.id}}</td>
+                <td class="left" width="20%">{{post.title | customHello: post.title}}</td>
+                <td class="left" width="40%">{{post.body}}</td>
+                <td class="left" width="20%">
+                    <span class="icons-wrap">
+                        <clr-icon title="See Details" shape="details" (click)="handleSeeDetials(i)"></clr-icon>
+                    </span>
+                    <span>
+                        <clr-icon title="Edit Details" shape="pencil" (click)="handleEdit($event, post.id)"></clr-icon>
+                    </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
